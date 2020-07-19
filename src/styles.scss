@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/styles/variables';
+@import './assets/styles/fonts';
+@import './assets/styles/text';
+@import './assets/styles/mixins/layout';
+
+body {
+  position: relative;
+  margin: 0;
+  background-color: var(--color-main-dark);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  overflow: auto;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+
+.list {
+  @extend %navigation;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 100%;
+  padding-right: 20px;
+  font: {
+    size: var(--font-size-xs);
+    weight: var(--fonts-bold);
+  }
+}
+
+.item {
+  @extend %list-item;
+  @extend %list-item-underline;
+}
+
+.container {
+  display: block;
+  min-width: 320px;
+  max-width: 960px;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 0 0 20px 20px;
+  background-image: var(--gradient-info-block-bg);
+}
+
+
+
+
+
