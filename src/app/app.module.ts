@@ -7,6 +7,24 @@ import { MyLoginComponent } from './components/my-login/my-login.component';
 import { MyHomeComponent } from './components/my-home/my-home.component';
 import { MyTableComponent } from './components/my-table/my-table.component';
 import { MyHeaderComponent } from './components/my-header/my-header.component';
+import { Page404Component } from './components/page404/page404.component';
+import {
+  SwiperModule,
+  SwiperConfigInterface,
+  SWIPER_CONFIG
+} from 'ngx-swiper-wrapper';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  observer: true,
+  direction: 'horizontal',
+  threshold: 50,
+  spaceBetween: 5,
+  slidesPerView: 1,
+  centeredSlides: true
+};
 
 @NgModule({
   declarations: [
@@ -14,13 +32,23 @@ import { MyHeaderComponent } from './components/my-header/my-header.component';
     MyLoginComponent,
     MyHomeComponent,
     MyTableComponent,
-    MyHeaderComponent
+    MyHeaderComponent,
+    Page404Component,
+    RegistrationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SwiperModule,
+        ReactiveFormsModule,
+        MatTableModule
+    ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

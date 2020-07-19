@@ -1,0 +1,14 @@
+table {
+  margin: 0 auto;
+
+  tr {
+
+    th, td {
+      color: var(--color-primary);
+    }
+
+    td {
+      padding: 24px 15px;
+    }
+  }
+}

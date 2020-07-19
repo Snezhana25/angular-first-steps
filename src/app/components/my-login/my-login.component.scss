@@ -1,0 +1,12 @@
+@import '~src/assets/styles/mixins/layout';
+
+.item {
+  display: inline-block;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin: 30px;
+  text-shadow: var(--shadow-shine-text) ;
+}

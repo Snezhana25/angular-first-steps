@@ -1,14 +1,10 @@
-<nav class="main-nav">
-  <ul
-          class="main-nav"
-          ng-sticky
-          addClass="main-sticky-link">
-    <li class="main-nav__item" routerLinkActive="active">
-      <a class="main-nav__link" routerLink="/">Home</a>
+<header class="header">
+  <ul class="list">
+    <li class="item-wrap" [routerLinkActive]="['active']">
+      <a class="item" [routerLink]="['/']">Home</a>
     </li>
-    <li class="main-nav__item" routerLinkActive="active">
-      <a class="main-nav__link" routerLink="/my-login">About us</a>
+    <li class="item-wrap" [routerLinkActive]="['active']">
+      <a class="item" [routerLink]="['/my-login']">Login</a>
     </li>
   </ul>
-</nav>
-
+</header>

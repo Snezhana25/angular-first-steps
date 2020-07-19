@@ -1,10 +1,10 @@
-<p>
-  my-login works!
-</p>
-<li>
-  <a [routerLink]="['/my-login/1/my-table']">Статистика товара</a>
-</li>
-<section class="main">
-  <router-outlet></router-outlet>
-</section>
+<div class="container">
+  <app-registration *ngIf="show && !id" (onChanged)="onChanged($event)"></app-registration>
+  <div class="title" *ngIf="!show"> {{'Congratulations on your successful registration'}}</div>
+  <a class="item" *ngIf="!show" [routerLink]="['/my-login/1/my-table']">Follow me</a>
+  <section class="main">
+    <router-outlet></router-outlet>
+  </section>
+</div>
+
 

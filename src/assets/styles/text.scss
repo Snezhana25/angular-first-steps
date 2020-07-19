@@ -1,0 +1,15 @@
+
+h1, h2, h3 {
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.title {
+  position: relative;
+  font-family: var(--font-family-medium);
+  font-weight: var(--fonts-medium);
+  font-size: var(--font-size-xxl-mob);
+  text-transform: uppercase;
+  text-shadow: var(--shadow-text-neon);
+  letter-spacing: 4px;
+}

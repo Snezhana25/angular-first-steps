@@ -1,6 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {filter, map, switchMap} from 'rxjs/operators';
+import {untilDestroyed} from 'ngx-take-until-destroy';
+
 
 @Component({
   selector: 'app-my-login',
@@ -9,19 +12,22 @@ import {Subscription} from 'rxjs';
 })
 export class MyLoginComponent implements OnInit, OnDestroy {
   id: number;
-  routeSubscription: Subscription;
+  currentPageId: Subscription;
+  show = true;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.subscribe( s => console.log('---', s));
+    this.currentPageId = this.route.paramMap.pipe(switchMap(params => params.getAll('id')))
+        .subscribe(data => this.id = +data);
+  }
 
-    this.routeSubscription = this.route.params.subscribe(params => this.id = params['id']);
-
+  onChanged(event) {
+    this.show = event;
   }
 
   ngOnDestroy() {
-    // this.routeSubscription.unsubscribe();
+    this.currentPageId.unsubscribe();
   }
 
 }
