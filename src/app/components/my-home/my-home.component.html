@@ -1,6 +1,5 @@
 <div class="container">
     <h3 class="title">Swiper</h3>
-
     <div class="content-container">
         <swiper
            *ngIf="type == 'component' && show"
@@ -13,7 +12,7 @@
         >
             <div *ngFor="let slide of slides" class="swiper-slide">
                 <div>
-                    <img [src]="slide" alt="image" class="slide">
+                    <img [src]="slide.url" alt="image" class="slide">
                 </div>
             </div>
         </swiper>

@@ -1,0 +1,32 @@
+<form class="form" [formGroup]="angForm" novalidate (ngSubmit)="submit()">
+  <div class="form-group">
+    <div class="wrap-label">
+      <label>Password:</label>
+    </div>
+    <input class="input" formControlName="password" type="text">
+    <div class="wrap-info" *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+      <div class="info" *ngIf="angForm.controls['password'].errors.required">
+        Password is required.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="wrap-label">
+      <label>Email:</label>
+    </div>
+    <input class="input" formControlName="email" type="text">
+    <div class="wrap-info" *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+      <div class="info" *ngIf="angForm.controls['email'].errors.required">
+        email is required.
+      </div>
+    </div>
+  </div>
+<div class="wrap-btn">
+  <button class="button" type="submit" [disabled]="angForm.pristine || angForm.invalid" (click)="change()">
+    Save
+  </button>
+</div>
+</form>
+<p class="text">Form value: {{ angForm.value | json }}</p>
+<p class="text">Form status: {{ angForm.status | json }}</p>

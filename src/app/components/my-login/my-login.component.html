@@ -1,6 +1,7 @@
 <div class="container">
-  <a class="item" [routerLink]="['/my-login/1/my-table']">Table1</a>
-
+  <app-registration *ngIf="show && !id" (onChanged)="onChanged($event)"></app-registration>
+  <div class="title" *ngIf="!show"> {{'Congratulations on your successful registration'}}</div>
+  <a class="item" *ngIf="!show" [routerLink]="['/my-login/1/my-table']">Follow me</a>
   <section class="main">
     <router-outlet></router-outlet>
   </section>

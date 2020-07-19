@@ -13,6 +13,9 @@ import {
   SwiperConfigInterface,
   SWIPER_CONFIG
 } from 'ngx-swiper-wrapper';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   observer: true,
@@ -30,13 +33,16 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MyHomeComponent,
     MyTableComponent,
     MyHeaderComponent,
-    Page404Component
+    Page404Component,
+    RegistrationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SwiperModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SwiperModule,
+        ReactiveFormsModule,
+        MatTableModule
+    ],
   providers: [
     {
       provide: SWIPER_CONFIG,

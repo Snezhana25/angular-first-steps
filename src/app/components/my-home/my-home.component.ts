@@ -9,19 +9,7 @@ import { SwiperComponent, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class MyHomeComponent implements OnInit {
   @ViewChild(SwiperComponent) componentRef?: SwiperComponent;
 
-  slides = [
-    'https://picsum.photos/700/250/?image=27',
-    'https://picsum.photos/700/250/?image=22',
-    'https://picsum.photos/700/250/?image=61',
-    'https://picsum.photos/700/250/?image=23',
-    'https://picsum.photos/700/250/?image=24',
-    'https://picsum.photos/700/250/?image=26',
-    'https://picsum.photos/700/250/?image=41',
-    'https://picsum.photos/700/250/?image=28',
-    'https://picsum.photos/700/250/?image=21',
-    'https://picsum.photos/700/250/?image=20',
-    'https://picsum.photos/400/250/?image=75'
-  ];
+  slides = [];
 
   show = true;
   type = 'component';
@@ -43,6 +31,11 @@ export class MyHomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    fetch('https://jsonplaceholder.typicode.com/photos?_limit=5')
+        .then(res => res.json())
+        .then(data => this.slides = data)
+        .catch(err => console.log(err));
   }
 
   onIndexChange(index: number): void {

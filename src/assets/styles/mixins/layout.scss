@@ -4,6 +4,8 @@
   background-color: var(--color-main-dark);
 }
 
+$transition: .3s ease;
+
 %width-restriction {
   max-width: 940px;
   margin: 0 auto;
@@ -81,5 +83,89 @@
     z-index: 10;
     box-shadow: unset;
     transition: background-color .3s ease, box-shadow .3s ease;
+  }
+}
+
+%input {
+  height: 32px;
+  padding: 0 6px;
+  border: 1px solid var(--color-primary-opacity);
+  border-radius: 4px;
+  color: var(--color-primary);
+  background: var(--color-body-bg);
+  box-shadow: var(--shadow-modal);
+  transition: border .3s ease;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+%button {
+  @extend %button-box;
+  @extend %button-sizes;
+  @extend %button-font-bordered;
+  @extend %button-border-bordered;
+  @extend %button-states-bordered;
+}
+
+%button-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: unset;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+%button-sizes {
+  min-width: 50px;
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
+}
+
+%button-border-bordered {
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: var(--color-font-light-disabled);
+}
+
+%button-font-bordered {
+  color: var(--color-primary);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+%button-states-bordered {
+  transition: text-shadow $transition,
+  box-shadow $transition,
+  color $transition,
+  background-color $transition,
+  border-color $transition;
+
+  &:hover, &:focus {
+    border-color: rgba(255, 255, 255, 1);
+    text-shadow: var(--shadow-shine-text);
+    box-shadow: var(--shadow-button-bordered-hover);
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:active {
+    text-shadow: unset;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:disabled {
+    color: var(--color-font-light-disabled);
+    border-color: var(--color-font-light-disabled);
+    background-color: transparent;
   }
 }
