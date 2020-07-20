@@ -1,3 +1,12 @@
+## For serving frontend:
+
+Use node v8 (since Angular 6+)
+
+    npm run start
+    
+Open page http://localhost:4200
+
+
 # AngularFirstSteps
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.

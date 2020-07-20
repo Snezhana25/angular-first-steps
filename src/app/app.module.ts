@@ -15,7 +15,10 @@ import {
 } from 'ngx-swiper-wrapper';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material';
+import {MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   observer: true,
@@ -37,11 +40,15 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RegistrationComponent
   ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SwiperModule,
-        ReactiveFormsModule,
-        MatTableModule
+      BrowserModule,
+      AppRoutingModule,
+      SwiperModule,
+      ReactiveFormsModule,
+      MatTableModule,
+      MatPaginatorModule,
+      MatSortModule,
+      HttpClientModule,
+      BrowserAnimationsModule
     ],
   providers: [
     {
