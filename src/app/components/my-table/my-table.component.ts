@@ -1,14 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from '@angular/material';
-
-export interface PeriodicElement {
-  email: string;
-  id: number;
-  name: string;
-  phone: string;
-  username: string;
-}
+import {MatPaginator, MatSort} from '@angular/material';
+import {MyTableService} from './my-table.service';
+import {Sort} from '@angular/material';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-table',
@@ -17,20 +12,35 @@ export interface PeriodicElement {
 })
 export class MyTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  todos = [];
+  todos;
   dataSource;
 
   displayedColumns: string[] = ['name', 'username', 'email', 'phone'];
 
-  constructor() { }
+  constructor(
+      private service: MyTableService,
+      private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource();
-    this.dataSource.sort = this.sort;
+    this.getElementData();
+    this.cdr.detectChanges();
+  }
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(json => this.todos = json);
+  private getElementData(): void {
+    this.service.getElementData().subscribe(res => {
+      this.todos = res;
+      this.dataSource = new MatTableDataSource( this.todos );
+      console.log('this.dataSource', this.dataSource);
+      console.log('this.todos', this.todos);
+    });
+  }
+
+  sortData(sort: Sort) { this.dataSource.sort = this.sort; }
+
+  pageEvent(event) {
+    this.dataSource.paginator = this.paginator;
   }
 }
